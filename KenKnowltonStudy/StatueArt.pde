@@ -1,14 +1,12 @@
 /* @pjs preload="../images/stress.jpg"; */
+
 PImage bw;
-PImage pre;
 void setup(){
 size(500,375);
 noLoop();
 }
 void draw(){
   statue();
-  bw = loadImage("result.jpeg");
-  image(bw, 50,50,100,100);
 }
 
 void statue(){
@@ -36,8 +34,8 @@ void statue(){
 }
 
 class Statue{
- pre = loadImage(".../images/stress.jpg");
-image(pre, 50, 50, 100, 100);
+PImage bw = loadImage("../stress.jpg");
+//image(pre, 50, 50, 100, 100);
  
  int imgW = 500;
  int imgL = 375;
