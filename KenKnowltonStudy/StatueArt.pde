@@ -1,3 +1,4 @@
+/* @pjs preload="../images/stress.jpg"; */
 void setup(){
 size(500,375);
 noLoop();
