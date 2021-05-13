@@ -7,6 +7,8 @@ noLoop();
 }
 void draw(){
   statue();
+  bw = loadImage("result.jpeg");
+  image(bw, 50,50,100,100);
 }
 
 void statue(){
@@ -29,8 +31,7 @@ void statue(){
        text(comprs[j][i],float(j),float(i));
      }
    }
-   bw = saveFrame("result.jpeg");
-   image(bw, 50,50,100,100);
+   saveFrame("result.jpeg");
   
 }
 
