@@ -34,7 +34,7 @@ void statue(){
 }
 
 class Statue{
-PImage bw = loadImage("../stress.jpg");
+PImage bw = loadImage("../image/stress.jpg");
 //image(pre, 50, 50, 100, 100);
  
  int imgW = 500;
