@@ -1,4 +1,4 @@
-/* @pjs preload="../images/stress.jpg"; */
+/* @pjs preload="../images/online.jpg"; */
 
 PImage bw;
 void setup(){
