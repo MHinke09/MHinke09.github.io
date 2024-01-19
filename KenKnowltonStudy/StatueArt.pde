@@ -37,8 +37,8 @@ class Statue{
 PImage bw = loadImage("../images/online.jpg");
 //image(pre, 50, 50, 100, 100);
  
- int imgW = 500;
- int imgL = 375;
+ int imgW = 2048;
+ int imgL = 2036;
  String[][] pixls = new String[imgW][imgL];
  
  color c = bw.get(100,100);
