@@ -2,7 +2,7 @@
 
 PImage bw;
 void setup(){
-size(500,375);
+size(2048,2036);
 noLoop();
 }
 void draw(){
@@ -34,7 +34,7 @@ void statue(){
 }
 
 class Statue{
-PImage bw = loadImage("../images/stress.jpg");
+PImage bw = loadImage("../images/online.jpg");
 //image(pre, 50, 50, 100, 100);
  
  int imgW = 500;
