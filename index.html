@@ -113,6 +113,25 @@
       margin: 0 auto 2rem;
     }
     
+    .hero-quote {
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #666;
+      margin-top: 1rem;
+      position: relative;
+      padding: 0 2rem;
+    }
+    
+    
+    
+    .hero-quote::before {
+      left: 0;
+    }
+    
+    .hero-quote::after {
+      right: 0;
+    }
+    
     /* Projects Section */
     .projects {
       padding: 5vh var(--spacing);
@@ -244,7 +263,8 @@
   <section class="hero">
     <div class="hero-content">
       <h1>Manuel Hinke</h1>
-      <p>Full-stack Developer at <a href="https://www.wayak.io" target="_blank">Wayak</a> with a passion for AI, backend development, and computational finance.</p>
+      <p>Building the future of AI driven data analysis at <a href="https://www.wayak.io" target="_blank">Wayak</a>.</p>
+      <div class="hero-quote">Aut viam inveniam aut faciam</div>
     </div>
   </section>
 
