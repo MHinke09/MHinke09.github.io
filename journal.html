@@ -161,20 +161,27 @@
         display: block;
       }
 
+      /* ASCII output styling: white background, dark text */
       .ascii-output {
-        background-color: #222;
-        color: #ddd;
+        background-color: #fff;
+        color: #000;
         padding: 2rem;
         border-radius: 8px;
         overflow: auto;
-        max-width: 100%;
+        /* Remove transform from here so layout is based on natural size */
         font-size: 6px;
         line-height: 5px;
         display: inline-block;
         text-align: left;
         font-family: 'Source Code Pro', monospace;
-        margin-top: 2rem;
         box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      }
+      
+      /* Wrapper to scale the high-resolution output */
+      .ascii-wrapper {
+        display: inline-block;
+        transform: scale(0.5);
+        transform-origin: top left;
       }
       
       /* Footer */
@@ -246,14 +253,21 @@
 
     <!-- Content Section -->
     <section class="content-section">
-      <p class="content-text">As I was scrolling through Twitter one evening, I stumbled across an image that caught my eye.</p>
+      <p class="content-text">As I was scrolling through Twitter one evening, I stumbled across an image that caught my eye.  It turned out to be <i>Computer Nude (Studies in Perception I)</i>, a piece created in 1966 by Ken Knowlton and Leon Harmon at Bell Labs. One of the earliest examples of computer-generated art, it used text-like symbols to form a grayscale image.</p>
+
+      <p>This project recreates that effect using JavaScript, converting images into ASCII in real-time while preserving as much detail as possible.</p>
+      
+      <p>See the original <i>Computer Nude (Studies in Perception I)</i> <a href="https://buffaloakg.org/artworks/p20142-computer-nude-studies-perception-i" target="_blank">here</a>.</p>
     </section>
 
     <!-- ASCII Art Generator Section -->
     <section class="ascii-section">
       <h2 class="section-title">A New Approach to Computer Nude</h2>
       <input type="file" id="upload" accept="image/*" class="file-input">
-      <pre id="ascii" class="ascii-output"></pre>
+      <!-- Wrap the ASCII art in a wrapper that scales it down -->
+      <div class="ascii-wrapper">
+        <pre id="ascii" class="ascii-output"></pre>
+      </div>
       <canvas id="canvas" style="display:none;"></canvas>
     </section>
 
@@ -276,72 +290,71 @@
 
     <!-- ASCII Art Generator Script -->
     <script>
-      const upload = document.getElementById('upload');
-      const canvas = document.getElementById('canvas');
-      const asciiImage = document.getElementById('ascii');
-      const ctx = canvas.getContext('2d');
-      
-      upload.addEventListener('change', function(e) {
-        const file = e.target.files[0];
-        const reader = new FileReader();
-      
-        reader.onload = function(event) {
-          const img = new Image();
-          img.src = event.target.result;
-      
-          img.onload = function() {
-            // STEP 1: Maintain original image dimensions, apply max width ONLY if excessively large.
-            const MAX_CANVAS_WIDTH = 800; // sensible practical upper limit
-            const scale = img.width > MAX_CANVAS_WIDTH ? MAX_CANVAS_WIDTH / img.width : 1;
-      
-            canvas.width = Math.floor(img.width * scale);
-            canvas.height = Math.floor(img.height * scale);
-      
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-      
-            const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-            const data = imgData.data;
-            let asciiString = '';
-      
-            // STEP 2: Match Processing's spacing logic explicitly
-            const spacingX = 5;
-            const spacingY = 10;
-      
-            const symbols = ['#', '%', '$', '+', '-', '.', ' ']; // darkest to brightest
-      
-            for (let y = 0; y < canvas.height; y += spacingY) {
-              for (let x = 0; x < canvas.width; x += spacingX) {
-                const offset = (y * canvas.width + x) * 4;
-                const r = data[offset];
-                const g = data[offset + 1];
-                const b = data[offset + 2];
-      
-                // Grayscale brightness calculation (0-255)
-                const brightness = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-      
-                // STEP 3: Precise threshold matching your Processing thresholds visually
-                let symbol;
-                if (brightness < 40) symbol = symbols[0];        // Darkest "#"
-                else if (brightness < 80) symbol = symbols[1];   // "%"
-                else if (brightness < 110) symbol = symbols[2];  // "$"
-                else if (brightness < 140) symbol = symbols[3];  // "+"
-                else if (brightness < 170) symbol = symbols[4];  // "-"
-                else if (brightness < 200) symbol = symbols[5];  // "."
-                else symbol = symbols[6];                        // Whitespace (lightest)
-      
-                asciiString += symbol;
+      (function() {
+        // Get references to the DOM elements.
+        const fileInput = document.getElementById('upload');
+        const canvas = document.getElementById('canvas');
+        const asciiOutput = document.getElementById('ascii');
+        const ctx = canvas.getContext('2d');
+
+        fileInput.addEventListener('change', function(e) {
+          const file = e.target.files[0];
+          if (!file) return;
+
+          const reader = new FileReader();
+          reader.onload = function(event) {
+            const img = new Image();
+            img.src = event.target.result;
+            
+            img.onload = function() {
+              // Use a high maximum canvas width to preserve resolution.
+              const MAX_CANVAS_WIDTH = 1800;
+              const scale = img.width > MAX_CANVAS_WIDTH ? MAX_CANVAS_WIDTH / img.width : 1;
+              canvas.width = Math.floor(img.width * scale);
+              canvas.height = Math.floor(img.height * scale);
+              
+              ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+              
+              const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+              let asciiString = "";
+              
+              // Finer sampling to capture more detail.
+              const spacingX = 2;
+              const spacingY = 4;
+              
+              // Original symbol mapping: darker areas produce dense characters.
+              const asciiChars = ['#', '%', '$', '+', '-', '.', ' '];
+              
+              for (let y = 0; y < canvas.height; y += spacingY) {
+                for (let x = 0; x < canvas.width; x += spacingX) {
+                  const index = (y * canvas.width + x) * 4;
+                  const r = imageData[index];
+                  const g = imageData[index + 1];
+                  const b = imageData[index + 2];
+                  
+                  // Compute brightness using the standard luminance formula.
+                  const brightness = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+                  
+                  let symbol;
+                  if (brightness < 40) symbol = asciiChars[0];
+                  else if (brightness < 80) symbol = asciiChars[1];
+                  else if (brightness < 110) symbol = asciiChars[2];
+                  else if (brightness < 140) symbol = asciiChars[3];
+                  else if (brightness < 170) symbol = asciiChars[4];
+                  else if (brightness < 200) symbol = asciiChars[5];
+                  else symbol = asciiChars[6];
+                  
+                  asciiString += symbol;
+                }
+                asciiString += "\n";
               }
-              asciiString += '\n';
-            }
-      
-            asciiImage.textContent = asciiString;
+              
+              asciiOutput.textContent = asciiString;
+            };
           };
-        };
-      
-        reader.readAsDataURL(file);
-      });
-      </script>
-      
-      
+          reader.readAsDataURL(file);
+        });
+      })();
+    </script>
   </body>
 </html>
