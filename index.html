@@ -26,6 +26,9 @@
       line-height: 1.6;
       color: var(--text-color);
       background: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
     
     /* Header */
@@ -137,6 +140,8 @@
       padding: 5vh var(--spacing);
       max-width: var(--container-width);
       margin: 0 auto;
+      flex-grow: 1;
+      min-height: calc(100vh - 250px);
     }
     
     .section-title {
