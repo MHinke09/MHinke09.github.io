@@ -5,305 +5,58 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary-color: #000;
-      --accent-color: #f8f8f8;
-      --text-color: #333;
-      --spacing: 4vw;
-      --container-width: min(1400px, 100vw - var(--spacing) * 2);
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    
-    body {
-      font-family: 'Roboto', sans-serif;
-      line-height: 1.6;
-      color: var(--text-color);
-      background: #fff;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    /* Header */
-    .header {
-      position: sticky;
-      top: 0;
-      width: 100%;
-      background: #fff;
-      z-index: 1000;
-      padding: 1.5vw var(--spacing);
-      border-bottom: 1px solid rgba(0,0,0,0.1);
-    }
-    
-    .header-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: var(--container-width);
-      margin: 0 auto;
-    }
-    
-    .logo {
-      font-weight: 700;
-      font-size: 1.5rem;
-      text-decoration: none;
-      color: var(--primary-color);
-    }
-    
-    .logo b {
-      font-weight: 900;
-    }
-    
-    .nav-list {
-      display: flex;
-      list-style: none;
-      gap: 2rem;
-    }
-    
-    .nav-item a {
-      text-decoration: none;
-      color: var(--text-color);
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      transition: color 0.3s;
-    }
-    
-    .nav-item a:hover {
-      color: #555;
-    }
-    
-    /* Hero Section */
-    .hero {
-      padding: 10vh var(--spacing);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background-color: var(--accent-color);
-    }
-    
-    .hero-content {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
-    .hero-logo {
-      width: 200px;
-      height: 200px;
-      margin-bottom: 2rem;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-    
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1.5rem;
-      font-weight: 700;
-    }
-    
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin: 0 auto 2rem;
-    }
-    
-    .hero-quote {
-      font-style: italic;
-      font-size: 1.1rem;
-      color: #666;
-      margin-top: 1rem;
-      position: relative;
-      padding: 0 2rem;
-    }
-    
-    
-    
-    .hero-quote::before {
-      left: 0;
-    }
-    
-    .hero-quote::after {
-      right: 0;
-    }
-    
-    /* Projects Section */
-    .projects {
-      padding: 5vh var(--spacing);
-      max-width: var(--container-width);
-      margin: 0 auto;
-      flex-grow: 1;
-      min-height: calc(100vh - 250px);
-    }
-    
-    .section-title {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 3rem;
-      position: relative;
-    }
-    
-    .section-title:after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: -15px;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 3px;
-      background-color: var(--primary-color);
-    }
-    
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 3rem;
-    }
-    
-    .project-item {
-      position: relative;
-      overflow: hidden;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    
-    .project-item:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.12);
-    }
-    
-    .project-image {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-    }
-    
-    .project-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 1rem;
-      background: rgba(0,0,0,0.7);
-      color: white;
-    }
-    
-    .project-title {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-      font-weight: 500;
-    }
-    
-    /* Footer */
-    .footer {
-      padding: 3vh var(--spacing);
-      background-color: var(--primary-color);
-      color: white;
-      text-align: center;
-    }
-    
-    .social-icons {
-      margin-bottom: 1rem;
-    }
-    
-    .social-icons a {
-      color: white;
-      font-size: 1.5rem;
-      margin: 0 10px;
-      text-decoration: none;
-    }
-    
-    .copyright {
-      font-size: 0.9rem;
-      opacity: 0.8;
-    }
-    
-    @media (max-width: 768px) {
-      .nav-list {
-        display: none;
-      }
-      
-      .hero h1 {
-        font-size: 2rem;
-      }
-      
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    
-    /* SVG Icons */
-    .icon {
-      width: 24px;
-      height: 24px;
-      fill: currentColor;
-    }
-  </style>
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
   <!-- Header -->
   <header class="header">
     <div class="header-inner">
-      <a href="#" class="logo"><b>MH</b> Portfolio</a>
+      <a href="index.html" class="logo">Manuel Hinke</a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span class="hamburger"></span>
+      </button>
       <nav class="nav">
         <ul class="nav-list">
-          <li class="nav-item"><a href="index.html#projects">Projects</a></li>
-          <li class="nav-item"><a href="about.html">About</a></li>
           <li class="nav-item"><a href="photography.html">Photography</a></li>
-          <li class="nav-item"><a href="https://www.linkedin.com/in/manuel-hinke/">LinkedIn</a></li>
+          <li class="nav-item"><a href="writings/index.html">Writings</a></li>
+          <li class="nav-item"><a href="about.html">About</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Manuel Hinke</h1>
-      <p>Building the future of AI driven data analysis at <a href="https://www.wayak.io" target="_blank">Wayak</a>.</p>
-      <div class="hero-quote">Aut viam inveniam aut faciam</div>
-    </div>
-  </section>
+  <!-- Main Content -->
+  <main>
+    <section class="intro">
+      <p class="intro-text">
+        Notes from a life, recorded in passing.
+      </p>
 
-  <!-- Projects Section -->
-  <section class="projects" id="projects">
-    <h2 class="section-title">Projects</h2>
-    
-    <div class="projects-grid">
-      <!-- Project 1 -->
-      <a href="study.html" class="project-item">
-        <div class="project-overlay">
-          <h3 class="project-title">A Modern Approach to Computer Nude</h3>
-        </div>
-        <img src="images/Screenshot 2020-10-24 at 5.26.06 PM.png" alt="Computer Nude" class="project-image">
-      </a>
-    </div>
-  </section>
+      <div class="pathways">
+        <a href="photography.html" class="pathway-link">Photography</a>
+        <a href="writings/index.html" class="pathway-link">Writings</a>
+        <a href="about.html" class="pathway-link">About</a>
+      </div>
+    </section>
+  </main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="social-icons">
-      <a href="https://www.linkedin.com/in/manuel-hinke/" target="_blank">
-        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-        </svg>
-      </a>
-      <a href="mailto:manuel@hinkesoto.com">
-        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/>
-        </svg>
-      </a>
-    </div>
-    <p class="copyright">Copyright © 2023 Manuel Hinke. All rights reserved.</p>
-  </footer>
+  <script>
+    // Mobile navigation toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.nav');
+
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('active');
+      nav.classList.toggle('active');
+    });
+
+    // Close nav when clicking a link
+    document.querySelectorAll('.nav-item a').forEach(link => {
+      link.addEventListener('click', () => {
+        navToggle.classList.remove('active');
+        nav.classList.remove('active');
+      });
+    });
+  </script>
 </body>
 </html>

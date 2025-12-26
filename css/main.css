@@ -1,0 +1,592 @@
+/* ==========================================================================
+   Design Tokens
+   ========================================================================== */
+
+:root {
+  /* Color Palette - Cream/Warm Gray */
+  --color-cream: #FAF8F5;
+  --color-cream-dark: #F5F2ED;
+  --color-warm-gray-100: #E8E6E3;
+  --color-warm-gray-200: #D4D1CC;
+  --color-warm-gray-300: #B8B4AE;
+  --color-warm-gray-400: #8A8580;
+  --color-warm-gray-500: #6B6660;
+  --color-warm-gray-600: #4A4641;
+  --color-warm-gray-700: #333028;
+  --color-charcoal: #1A1815;
+
+  /* Semantic Colors */
+  --color-background: var(--color-cream);
+  --color-background-alt: var(--color-cream-dark);
+  --color-text-primary: var(--color-charcoal);
+  --color-text-secondary: var(--color-warm-gray-500);
+  --color-text-muted: var(--color-warm-gray-400);
+  --color-border: var(--color-warm-gray-200);
+  --color-accent: var(--color-warm-gray-700);
+
+  /* Typography */
+  --font-family-base: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 2rem;
+
+  --line-height-tight: 1.25;
+  --line-height-base: 1.6;
+  --line-height-relaxed: 1.75;
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+  --spacing-page: 4vw;
+
+  /* Layout */
+  --container-width: min(1200px, 100vw - var(--spacing-page) * 2);
+  --container-narrow: min(720px, 100vw - var(--spacing-page) * 2);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 300ms ease;
+  --transition-slow: 500ms ease;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(26, 24, 21, 0.05);
+  --shadow-md: 0 4px 12px rgba(26, 24, 21, 0.08);
+  --shadow-lg: 0 10px 24px rgba(26, 24, 21, 0.12);
+}
+
+/* ==========================================================================
+   Base/Reset Styles
+   ========================================================================== */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-base);
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-text-secondary);
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+}
+
+h1 { font-size: var(--font-size-3xl); }
+h2 { font-size: var(--font-size-2xl); }
+h3 { font-size: var(--font-size-xl); }
+
+p {
+  margin-bottom: var(--spacing-md);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-page);
+}
+
+.container--narrow {
+  max-width: var(--container-narrow);
+}
+
+main {
+  flex: 1;
+}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+.header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: var(--color-background);
+  z-index: 1000;
+  padding: var(--spacing-lg) var(--spacing-page);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--container-width);
+  margin: 0 auto;
+}
+
+.logo {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xl);
+  text-decoration: none;
+  color: var(--color-text-primary);
+}
+
+.logo:hover {
+  color: var(--color-text-primary);
+}
+
+/* ==========================================================================
+   Navigation
+   ========================================================================== */
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: var(--spacing-xl);
+}
+
+.nav-item a {
+  text-decoration: none;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: color var(--transition-base);
+}
+
+.nav-item a:hover {
+  color: var(--color-text-primary);
+}
+
+/* Mobile Navigation Toggle */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-sm);
+  z-index: 1001;
+}
+
+.hamburger {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-text-primary);
+  position: relative;
+  transition: background-color var(--transition-fast);
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-text-primary);
+  transition: transform var(--transition-base);
+}
+
+.hamburger::before {
+  top: -7px;
+}
+
+.hamburger::after {
+  top: 7px;
+}
+
+/* Hamburger animation when open */
+.nav-toggle.active .hamburger {
+  background-color: transparent;
+}
+
+.nav-toggle.active .hamburger::before {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-toggle.active .hamburger::after {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.footer {
+  padding: var(--spacing-lg) var(--spacing-page);
+  background-color: var(--color-charcoal);
+  color: var(--color-cream);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.social-icons a {
+  color: var(--color-cream);
+  transition: opacity var(--transition-fast);
+  display: flex;
+}
+
+.social-icons a:hover {
+  opacity: 0.7;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.copyright {
+  font-size: var(--font-size-xs);
+  opacity: 0.6;
+}
+
+/* ==========================================================================
+   Section Styles
+   ========================================================================== */
+
+.section {
+  padding: var(--spacing-3xl) 0;
+}
+
+.section--alt {
+  background-color: var(--color-background-alt);
+}
+
+.section-title {
+  text-align: center;
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--spacing-2xl);
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -12px;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 2px;
+  background-color: var(--color-warm-gray-300);
+}
+
+/* ==========================================================================
+   Homepage Intro
+   ========================================================================== */
+
+.intro {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-2xl) var(--spacing-page);
+  max-width: var(--container-narrow);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.intro-text {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.intro-name {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Pathway Cards/Links */
+.pathways {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-xl);
+  flex-wrap: wrap;
+  margin-top: var(--spacing-2xl);
+}
+
+.pathway-link {
+  display: inline-block;
+  padding: var(--spacing-md) var(--spacing-xl);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all var(--transition-base);
+}
+
+.pathway-link:hover {
+  color: var(--color-text-primary);
+  border-color: var(--color-warm-gray-400);
+  background-color: var(--color-background-alt);
+}
+
+/* ==========================================================================
+   Gallery (Masonry Grid)
+   ========================================================================== */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 10px;
+  gap: 16px;
+  padding: var(--spacing-xl) 0;
+  max-width: var(--container-width);
+  margin: 0 auto;
+}
+
+.gallery-item {
+  overflow: hidden;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.gallery-item:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-lg);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-item--horizontal {
+  grid-row: span 22; /* ~220px - shorter for landscape photos */
+}
+
+.gallery-item--vertical {
+  grid-row: span 50; /* ~500px - much taller for portrait photos */
+}
+
+/* ==========================================================================
+   Writings/Blog
+   ========================================================================== */
+
+.writings-list {
+  max-width: var(--container-narrow);
+  margin: 0 auto;
+  padding: var(--spacing-xl) var(--spacing-page);
+}
+
+.writing-item {
+  padding: var(--spacing-xl) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.writing-item:last-child {
+  border-bottom: none;
+}
+
+.writing-title {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-sm);
+}
+
+.writing-title a {
+  color: var(--color-text-primary);
+}
+
+.writing-title a:hover {
+  color: var(--color-text-secondary);
+}
+
+.writing-excerpt {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.writing-meta {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* Article/Prose Styles */
+.prose {
+  max-width: var(--container-narrow);
+  margin: 0 auto;
+  padding: var(--spacing-2xl) var(--spacing-page);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+}
+
+.prose h2 {
+  margin-top: var(--spacing-2xl);
+  margin-bottom: var(--spacing-md);
+}
+
+.prose p {
+  margin-bottom: var(--spacing-lg);
+}
+
+/* ==========================================================================
+   About Page
+   ========================================================================== */
+
+.about-content {
+  max-width: var(--container-narrow);
+  margin: 0 auto;
+  padding: var(--spacing-2xl) var(--spacing-page);
+}
+
+.about-content p {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  /* Show mobile nav toggle */
+  .nav-toggle {
+    display: block;
+  }
+
+  /* Mobile navigation */
+  .nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--color-background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: right var(--transition-base);
+    z-index: 1000;
+  }
+
+  .nav.active {
+    right: 0;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-2xl);
+  }
+
+  .nav-item a {
+    font-size: var(--font-size-xl);
+  }
+
+  /* Typography adjustments */
+  h1 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .intro-text {
+    font-size: var(--font-size-base);
+  }
+
+  .pathways {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pathway-link {
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-item--horizontal,
+  .gallery-item--vertical {
+    grid-row: auto;
+  }
+
+  .gallery-item img {
+    height: auto;
+    aspect-ratio: auto;
+  }
+}
