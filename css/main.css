@@ -578,6 +578,7 @@ main {
 @media (max-width: 600px) {
   .gallery-grid {
     grid-template-columns: 1fr;
+    grid-auto-rows: auto;
   }
 
   .gallery-item--horizontal,
