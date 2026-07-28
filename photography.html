@@ -1,157 +1,212 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <title>Photography - Manuel Hinke</title>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/main.css">
+  <meta name="description" content="Photography by Manuel Hinke — selected street, portrait, and place-based work.">
+  <title>Photography — Manuel Hinke</title>
+  <link rel="stylesheet" href="css/photography.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe.css">
 </head>
-<body>
-  <!-- Header -->
-  <header class="header">
-    <div class="header-inner">
-      <a href="index.html" class="logo">Manuel Hinke</a>
-      <button class="nav-toggle" aria-label="Toggle navigation">
-        <span class="hamburger"></span>
+<body class="workprint">
+  <a class="skip-link" href="#workprint-frames">Skip to photographs</a>
+
+  <header class="portfolio-header" data-site-header>
+    <div class="portfolio-header__inner">
+      <a class="portfolio-brand" href="index.html" aria-label="Manuel Hinke, home">
+        Manuel Hinke
+      </a>
+
+      <div class="portfolio-context" aria-hidden="true">
+        <span>Photography</span>
+        <small>Selected work / Workprint 01</small>
+      </div>
+
+      <button class="portfolio-menu-button"
+              type="button"
+              aria-expanded="false"
+              aria-controls="portfolio-navigation">
+        <span>Menu</span>
+        <i aria-hidden="true"></i>
+        <i aria-hidden="true"></i>
       </button>
-      <nav class="nav">
-        <ul class="nav-list">
-          <li class="nav-item"><a href="photography.html">Photography</a></li>
-          <li class="nav-item"><a href="writings/index.html">Writings</a></li>
-          <li class="nav-item"><a href="about.html">About</a></li>
-        </ul>
+
+      <nav class="portfolio-nav" id="portfolio-navigation" aria-label="Primary navigation">
+        <a href="photography.html" aria-current="page">
+          <small>01</small><span>Photography</span>
+        </a>
+        <a href="writings/index.html">
+          <small>02</small><span>Writings</span>
+        </a>
+        <a href="about.html">
+          <small>03</small><span>About</span>
+        </a>
       </nav>
     </div>
   </header>
 
-  <!-- Main Content -->
-  <main>
-    <section class="section">
-      <div class="container">
-        <h1 class="section-title">Photography</h1>
-
-        <div class="gallery-grid" id="gallery">
-          <a href="images/photography/B&WMariachi.jpg"
-             class="gallery-item gallery-item--horizontal"
-             data-pswp-width="6000"
-             data-pswp-height="4000">
-            <img src="images/photography/B&WMariachi.jpg" alt="Black and White Mariachi" loading="lazy">
-          </a>
-
-          <a href="images/photography/JohannaBW.jpg"
-             class="gallery-item gallery-item--vertical"
-             data-pswp-width="4000"
-             data-pswp-height="6000">
-            <img src="images/photography/JohannaBW.jpg" alt="Black and White Portrait" loading="lazy">
-          </a>
-
-          <a href="images/photography/NO1.jpg"
-             class="gallery-item gallery-item--horizontal"
-             data-pswp-width="1565"
-             data-pswp-height="1037">
-            <img src="images/photography/NO1.jpg" alt="New Orleans Street Scene" loading="lazy">
-          </a>
-
-          <a href="images/photography/Amsterdam1.jpg"
-             class="gallery-item gallery-item--horizontal"
-             data-pswp-width="1565"
-             data-pswp-height="1037">
-            <img src="images/photography/Amsterdam1.jpg" alt="Amsterdam Architecture" loading="lazy">
-          </a>
-
-          <a href="images/photography/BLACK&WHITEFRANKFURT.jpg"
-             class="gallery-item gallery-item--horizontal"
-             data-pswp-width="4753"
-             data-pswp-height="3285">
-            <img src="images/photography/BLACK&WHITEFRANKFURT.jpg" alt="Black and White Frankfurt" loading="lazy">
-          </a>
-
-          <a href="images/photography/NYC1.jpg"
-             class="gallery-item gallery-item--horizontal"
-             data-pswp-width="1565"
-             data-pswp-height="1037">
-            <img src="images/photography/NYC1.jpg" alt="New York City Scene" loading="lazy">
-          </a>
-
-          <a href="images/photography/NO2.jpg"
-             class="gallery-item gallery-item--horizontal"
-             data-pswp-width="1565"
-             data-pswp-height="1037">
-            <img src="images/photography/NO2.jpg" alt="New Orleans Scene" loading="lazy">
-          </a>
+  <main id="workprint-frames" data-photo-gallery>
+    <section class="workprint-intro" aria-labelledby="workprint-title">
+      <div>
+        <p>Seven exposures / One working edit</p>
+        <h1 id="workprint-title">Contact<br>01</h1>
+      </div>
+      <div class="workprint-intro__aside">
+        <p class="workprint-intro__note">
+          Street, portrait, and place—held together by gesture, light,
+          and the spaces in between.
+        </p>
+        <div class="proof-key" aria-label="Editing mark key">
+          <span class="proof-key__select">✓ select</span>
+          <span class="proof-key__sequence">→ sequence</span>
+          <span class="proof-key__crop">⌜ crop / print</span>
+          <span class="proof-key__drop">× drop</span>
         </div>
       </div>
     </section>
+
+    <section class="workprint-lead" aria-label="Selected frame">
+      <div class="workprint-section-label">
+        <span>Roll 01</span><span>Selected enlargement</span><span>Frame 001</span>
+      </div>
+      <figure class="proof-frame proof-frame--lead">
+        <a href="images/photography/B&amp;WMariachi.jpg"
+           data-pswp-width="6000"
+           data-pswp-height="4000">
+          <img src="images/photography/B&amp;WMariachi.jpg" alt="Figures gathered beneath market awnings and trees">
+        </a>
+        <figcaption><span>001 / Gathering</span><span>Public space</span></figcaption>
+      </figure>
+      <div class="proof-mark proof-mark--lead-select" aria-hidden="true">
+        <svg viewBox="0 0 285 96">
+          <path d="M8 45 C19 51 24 63 34 76 C45 58 57 38 77 11"></path>
+          <path d="M96 64 C145 71 205 69 277 56"></path>
+          <path d="M98 71 C158 77 221 71 273 62"></path>
+        </svg>
+        <span>pick 01 — keep all three heads</span>
+      </div>
+    </section>
+
+    <section class="workprint-strip-section" aria-label="Three-frame sequence">
+      <div class="workprint-section-label">
+        <span>Sequence A</span><span>Read left → right</span><span>Frames 002—004</span>
+      </div>
+      <div class="workprint-strip">
+        <figure class="proof-frame proof-frame--strip">
+          <div class="proof-rebate" aria-hidden="true"><span>MH 400</span><span>02</span></div>
+          <a href="images/photography/NO1.jpg"
+             data-pswp-width="1565"
+             data-pswp-height="1037">
+            <img src="images/photography/NO1.jpg" alt="Trumpet player on a New Orleans street" loading="lazy">
+          </a>
+          <figcaption><span>002 / New Orleans I</span><span>Street</span></figcaption>
+        </figure>
+
+        <figure class="proof-frame proof-frame--strip">
+          <div class="proof-rebate" aria-hidden="true"><span>MH 400</span><span>03</span></div>
+          <a href="images/photography/Amsterdam1.jpg"
+             data-pswp-width="1565"
+             data-pswp-height="1037">
+            <img src="images/photography/Amsterdam1.jpg" alt="Three people seated across a canal in Amsterdam" loading="lazy">
+          </a>
+          <figcaption><span>003 / Amsterdam</span><span>Place</span></figcaption>
+          <div class="proof-mark proof-mark--strip-select" aria-hidden="true">
+            <svg viewBox="0 0 88 74">
+              <path d="M7 36 C19 43 27 52 34 65 C46 43 58 23 79 8"></path>
+              <path d="M10 42 C20 48 27 58 34 69"></path>
+            </svg>
+            <span>anchor</span>
+          </div>
+        </figure>
+
+        <figure class="proof-frame proof-frame--strip">
+          <div class="proof-rebate" aria-hidden="true"><span>MH 400</span><span>04</span></div>
+          <a href="images/photography/BLACK&amp;WHITEFRANKFURT.jpg"
+             data-pswp-width="4753"
+             data-pswp-height="3285">
+            <img src="images/photography/BLACK&amp;WHITEFRANKFURT.jpg" alt="Figure waiting in a dark modern station" loading="lazy">
+          </a>
+          <figcaption><span>004 / Frankfurt</span><span>Interior</span></figcaption>
+          <div class="proof-mark proof-mark--drop" aria-hidden="true">
+            <svg viewBox="0 0 210 150">
+              <path d="M22 17 C74 61 126 99 190 137"></path>
+              <path d="M186 13 C129 62 80 104 19 139"></path>
+              <path d="M30 12 C83 51 137 98 195 130"></path>
+            </svg>
+            <span>drop 04 — breaks daylight</span>
+          </div>
+        </figure>
+      </div>
+      <div class="proof-mark proof-mark--sequence" aria-hidden="true">
+        <svg viewBox="0 0 360 82">
+          <path d="M7 54 C95 6 205 10 329 44"></path>
+          <path d="M313 29 L335 45 L307 53"></path>
+          <path class="proof-mark__echo" d="M11 58 C102 12 209 15 327 48"></path>
+        </svg>
+        <span>02 → 03 / gesture opens, then holds</span>
+      </div>
+    </section>
+
+    <section class="workprint-spread" aria-label="Portrait and closing frames">
+      <div class="workprint-portrait">
+        <div class="workprint-section-label">
+          <span>Turn camera</span><span>Vertical proof</span><span>Frame 005</span>
+        </div>
+        <figure class="proof-frame proof-frame--portrait">
+          <a href="images/photography/JohannaBW.jpg"
+             data-pswp-width="4000"
+             data-pswp-height="6000">
+            <img src="images/photography/JohannaBW.jpg" alt="Black and white portrait outdoors" loading="lazy">
+          </a>
+          <figcaption><span>005 / Portrait</span><span>Vertical</span></figcaption>
+          <div class="proof-crop proof-crop--portrait" aria-hidden="true">
+            <i></i><i></i><i></i><i></i>
+            <span>full neg. — dog holds the edge</span>
+          </div>
+        </figure>
+      </div>
+
+      <div class="workprint-pair">
+        <div class="workprint-section-label">
+          <span>Sequence B</span><span>Color shift</span><span>Frames 006—007</span>
+        </div>
+        <figure class="proof-frame proof-frame--wide">
+          <a href="images/photography/NYC1.jpg"
+             data-pswp-width="1565"
+             data-pswp-height="1037">
+            <img src="images/photography/NYC1.jpg" alt="Woman walking several dogs through a city intersection" loading="lazy">
+          </a>
+          <figcaption><span>006 / New York</span><span>Street</span></figcaption>
+          <div class="proof-mark proof-mark--second-select" aria-hidden="true">
+            <svg viewBox="0 0 235 70">
+              <path d="M8 22 C18 33 27 43 35 59 C49 36 64 21 84 7"></path>
+              <path d="M101 48 C143 53 186 50 229 42"></path>
+            </svg>
+            <span>second pick — movement survives</span>
+          </div>
+        </figure>
+        <figure class="proof-frame proof-frame--wide">
+          <a href="images/photography/NO2.jpg"
+             data-pswp-width="1565"
+             data-pswp-height="1037">
+            <img src="images/photography/NO2.jpg" alt="Industrial structures against a clear blue sky" loading="lazy">
+          </a>
+          <figcaption><span>007 / New Orleans II</span><span>Industry</span></figcaption>
+          <div class="proof-crop proof-crop--wide" aria-hidden="true">
+            <i></i><i></i><i></i><i></i>
+            <span>4:5 test — protect the blue</span>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <footer class="workprint-end">
+      <span>End of roll 01</span>
+      <p>The edit remains provisional. The photographs do not.</p>
+      <a href="#workprint-frames">Return to first frame ↑</a>
+    </footer>
   </main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="social-icons">
-      <a href="https://www.linkedin.com/in/manuel-hinke/" target="_blank" aria-label="LinkedIn">
-        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-        </svg>
-      </a>
-      <a href="mailto:manuel@hinkesoto.com" aria-label="Email">
-        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/>
-        </svg>
-      </a>
-    </div>
-    <p class="copyright">Copyright © 2024 Manuel Hinke. All rights reserved.</p>
-  </footer>
-
-  <!-- Mobile Navigation Script -->
-  <script>
-    const navToggle = document.querySelector('.nav-toggle');
-    const nav = document.querySelector('.nav');
-
-    navToggle.addEventListener('click', () => {
-      navToggle.classList.toggle('active');
-      nav.classList.toggle('active');
-    });
-
-    document.querySelectorAll('.nav-item a').forEach(link => {
-      link.addEventListener('click', () => {
-        navToggle.classList.remove('active');
-        nav.classList.remove('active');
-      });
-    });
-  </script>
-
-  <!-- PhotoSwipe Lightbox -->
-  <script type="module">
-    import PhotoSwipeLightbox from 'https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe-lightbox.esm.min.js';
-    import PhotoSwipe from 'https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe.esm.min.js';
-
-    const lightbox = new PhotoSwipeLightbox({
-      gallery: '#gallery',
-      children: 'a',
-      pswpModule: PhotoSwipe,
-
-      // Zoom configuration
-      initialZoomLevel: 'fit',
-      secondaryZoomLevel: 2,
-      maxZoomLevel: 4,
-
-      // Preload adjacent images
-      preload: [1, 2],
-
-      // Keyboard navigation
-      escKey: true,
-      arrowKeys: true,
-
-      // Touch gestures
-      pinchToClose: true,
-      closeOnVerticalDrag: true,
-
-      // Padding around image
-      padding: { top: 20, bottom: 20, left: 20, right: 20 }
-    });
-
-    lightbox.init();
-  </script>
+  <script type="module" src="js/photography.js?v=1"></script>
 </body>
 </html>
